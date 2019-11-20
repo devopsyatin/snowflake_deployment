@@ -1,0 +1,43 @@
+#### Creation Date: 20 Nov 2019 ####################
+
+
+
+Install Docker
+Run container for hashmapinc/sqitch and login to it.
+Install: wget, curl, gpg, vim, apt-utils
+
+Check version of CLI in the Snowflake GUI (Help Section)
+Execute follow commands:
+$ curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.0-linux_x86_64.bash ## Download SnowSQL installer
+$ curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.0-linux_x86_64.bash.sig # Download GPG signature
+$ gpg --keyserver hkp://keys.gnupg.net --recv-keys EC218558EABB25A1 ## Get the Public key
+$ gpg --verify snowsql-1.2.0-linux_x86_64.bash.sig snowsql-1.2.0-linux_x86_64.bash ## Verify Signature
+$ gpg --delete-key "Snowflake Computing" # Delete key log entry post successful verification.
+  Export the environment variables eg: (SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile )
+bash snowsql-1.2.0-linux_x86_64.bash ## This will ask for some paths so specify and proceed, then login to new terminal and configure ~/.snowsql/config and login via: $ snowsql -c conn_name
+
+Sample configuration:
+########################################################################################################
+[connections.shubham]
+# *WARNING* *WARNING* *WARNING* *WARNING* *WARNING* *WARNING*
+#
+# The Snowflake user password is stored in plain text in this file.
+# Pay special attention to the management of this file.
+# Thank you.
+#
+# *WARNING* *WARNING* *WARNING* *WARNING* *WARNING* *WARNING*
+
+#If a connection doesn't specify a value, it will default to these
+#
+accountname = VXA95806
+region = us-east-1
+username = amrutdengre
+password = NewStart123
+dbname = DEMO_DB
+schemaname = PUBLIC
+warehousename = COMPUTE_WH
+rolename = ACCOUNTADMIN
+#proxy_host = defaultproxyhost
+#proxy_port = defaultproxyport
+########################################################################################################
+
