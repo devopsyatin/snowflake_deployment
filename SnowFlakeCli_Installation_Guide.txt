@@ -1,6 +1,7 @@
-#### Creation Date: 20 Nov 2019 ####################
-
-
+############################  Creation Date: 20 Nov 2019 #####################################
+# Reference Link: https://docs.snowflake.net/manuals/user-guide/snowsql-install-config.html  #
+#                             Author: Shubham Saroj                                          #
+##############################################################################################
 
 Install Docker
 Run container for hashmapinc/sqitch and login to it.
@@ -40,4 +41,3 @@ rolename = ACCOUNTADMIN
 #proxy_host = defaultproxyhost
 #proxy_port = defaultproxyport
 ########################################################################################################
-
