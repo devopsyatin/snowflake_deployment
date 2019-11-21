@@ -25,7 +25,10 @@ pipeline {
     		sh '''
 	      mkdir testsnow 	
 	      cd testsnow
-	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake || sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
+	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
+          if [ echo $? != 0 ]; then 
+        sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
+        else
 	      cat sqitch.conf
 	      cat sqitch.plan
 	      sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
@@ -34,7 +37,9 @@ pipeline {
 -- XXX Add DDLs here.
 
 CREATE SCHEMA JenkinsTest;" > deploy/appschema.sql
-              ''' 
+          fi
+              '''
+               
     		}
 	}
     stage('Deploy changes') {
