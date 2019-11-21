@@ -12,8 +12,8 @@ pipeline {
     stage('Moving .snowsql to workspace and replacing snowsql in /bin') {
         steps {
             sh '''
-            rm /bin/snowsql 
-            mv /var/snowsql /bin/
+            # rm /bin/snowsql 
+            # mv /var/snowsql /bin/
             mv /var/.snowsql ./
             ''' 
         }
