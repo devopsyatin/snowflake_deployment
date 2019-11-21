@@ -1,5 +1,5 @@
 -- Verify testproject:appschema on snowflake
 
-USE WAREHOUSE &warehouse;
+USE WAREHOUSE COMPUTE_WH;
 
 -- XXX Add verifications here.
