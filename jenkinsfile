@@ -14,7 +14,8 @@ pipeline {
             sh '''
             # rm /bin/snowsql 
             # mv /var/snowsql /bin/
-            mv /var/.snowsql ./
+            # mv /var/.snowsql ./
+	    echo ${whoami}
             ''' 
         }
 	  }
