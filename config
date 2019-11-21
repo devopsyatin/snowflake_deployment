@@ -9,24 +9,24 @@
 
 #If a connection doesn't specify a value, it will default to these
 #
-accountname = vxa95806
+accountname = VXA95806
 region = us-east-1
 username = amrutdengre
 password = NewStart123
 #dbname = defaultdbname
 #schemaname = defaultschema
 #warehousename = defaultwarehouse
-#rolename = defaultrolename
+rolename = ACCOUNTADMIN
 #proxy_host = defaultproxyhost
 #proxy_port = defaultproxyport
 
-[connections.example]
+[connections.amrutdengre]
 #Can be used in SnowSql as #connect example
 
-accountname = vxa95806.us-east-1
+accountname = VXA95806.us-east-1
 username = amrutdengre
 password = NewStart123
-
+rolename = ACCOUNTADMIN
 [variables]
 #Loads these variables on startup
 #Can be used in SnowSql as select $example_variable
