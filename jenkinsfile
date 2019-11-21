@@ -23,7 +23,7 @@ pipeline {
     stage('Initialize Sqitch') {
     	steps{
     		sh '''
-	      mkdir testsnow; cd testsnow
+	      cd testsnow
 	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
 	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
 	      cat sqitch.conf
