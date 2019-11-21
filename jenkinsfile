@@ -1,13 +1,13 @@
 pipeline {
     options {
       timeout(time: 1, unit: 'HOURS') 
-  }
+			}
   agent {
     docker {
       image 'yatu10/snowflake-sqitch_21nov'
       args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
-    }
-  }
+		   }
+		}
   stages {
     stage('Moving .snowsql to workspace and replacing snowsql in /bin') {
         steps {
@@ -17,6 +17,7 @@ pipeline {
             mv /var/.snowsql ./
             ''' 
         }
+	  }
     }
     stage('Deploy changes') {
       steps {
@@ -35,8 +36,10 @@ pipeline {
               ''' 
         }
       }
-      post {
+    }
+	post {
     always {
       sh 'chmod -R 777 .'
     }
+  }
   }
