@@ -23,7 +23,7 @@ pipeline {
     stage('Initialize Sqitch') {
     	steps{
     		sh '''
-              sqitch init snowjenkinstest --enginesnowflake 
+              sqitch init snowjenkinstest --engine snowflake 
 	      cat sqitch.conf
 	      cat sqitch.plan
               ''' 
