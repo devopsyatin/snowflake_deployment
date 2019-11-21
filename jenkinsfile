@@ -14,6 +14,8 @@ pipeline {
             sh '''
 	    ls
 	    cat config
+	    snowsql -v
+	    sqitch --version
 	    cd ~
 	    ls -la
 	    #cp config ~/.snowsql/config
@@ -40,7 +42,6 @@ pipeline {
 	      cat ~/.sqitch/sqitch.conf
 	      cat sqitch.conf
 	      cat sqitch.plan
-	      snowsql -v
 	      #snowsql -a vxa95806.us-east-1 -u amrutdengre
 	      #sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
 	      #echo "USE WAREHOUSE COMPUTE_WH;
