@@ -15,7 +15,7 @@ pipeline {
             # rm /bin/snowsql 
             # mv /var/snowsql /bin/
             # mv /var/.snowsql ./
-	    whoami
+	            whoami
             ''' 
         }
 	  }
@@ -33,7 +33,7 @@ pipeline {
 
 -- XXX Add DDLs here.
 
-CREATE SCHEMA PUBLIC2;" > deploy/appschema.sql
+CREATE SCHEMA JenkinsTest;" > deploy/appschema.sql
               ''' 
     		}
 	}
