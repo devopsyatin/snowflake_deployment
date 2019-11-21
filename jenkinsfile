@@ -13,12 +13,10 @@ pipeline {
         steps {
             sh '''
 	    ls
-	    cat config
 	    snowsql -v
 	    sqitch --version
-	    cd ~
-	    ls -la
-	    #cp config ~/.snowsql/config
+	    cp config ~/.snowsql/config
+	    cat ~/.snowsql/config
             # rm /bin/snowsql 
             # mv /var/snowsql /bin/
             # mv /var/.snowsql ./
