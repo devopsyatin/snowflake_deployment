@@ -21,13 +21,14 @@ pipeline {
 	  }
 	  
     stage('Initialize Sqitch') {
+    	steps{
     		sh '''
               sqitch init snowjenkinstest --enginesnowflake 
 	      cat sqitch.conf
 	      cat sqitch.plan
               ''' 
     		}
-		
+	}
     stage('Deploy changes') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
