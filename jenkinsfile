@@ -23,9 +23,16 @@ pipeline {
     stage('Initialize Sqitch') {
     	steps{
     		sh '''
-              sqitch init snowjenkinstest --engine snowflake 
+	      mkdir testsnow; cd testsnow
+	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake 
 	      cat sqitch.conf
 	      cat sqitch.plan
+	      sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
+	      echo "USE WAREHOUSE COMPUTE_WH;
+
+-- XXX Add DDLs here.
+
+CREATE SCHEMA PUBLIC2;" > deploy/appschema.sql
               ''' 
     		}
 	}
