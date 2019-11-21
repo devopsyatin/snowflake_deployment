@@ -54,8 +54,7 @@ pipeline {
 	}
     stage('Deploy changes') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-          sh '''
+           sh '''
 	      #pwd
 	      #ls -la
 	      cat deploy/appschema.sql
@@ -63,18 +62,16 @@ pipeline {
               '''           
         }
       }
-    }
+   
     stage('Verify changes') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-          sh '''
+           sh '''
               sqitch verify "db:snowflake://amrutdengre@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               ''' 
         }
       }
-    }
-  }
-	post {
+   
+post {
     always {
       sh 'chmod -R 777 .'
     }
