@@ -23,9 +23,9 @@ pipeline {
     stage('Initialize Sqitch') {
     	steps{
     		sh '''
-	      rm -rf *
 	      mkdir testsnow; cd testsnow
-	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake; sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
+	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
+	      sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
 	      cat sqitch.conf
 	      cat sqitch.plan
 	      sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
