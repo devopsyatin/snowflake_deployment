@@ -29,9 +29,14 @@ pipeline {
               #if [ echo $? != 0 ]; then 
               #sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
               #else
+	      sqitch config --user engine.snowflake.client /bin/snowsql
+	      sqitch config --user user.name 'amrutdengre'
+              sqitch config --user user.email 'amrutdengre@gmail.com'
+	      cat ~/.sqitch/sqitch.conf
 	      cat sqitch.conf
 	      cat sqitch.plan
 	      snowsql -v
+	      #snowsql -a vxa95806.us-east-1 -u amrutdengre
 	      #sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
 	      #echo "USE WAREHOUSE COMPUTE_WH;
 
@@ -45,22 +50,21 @@ pipeline {
 	}
     stage('Deploy changes') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
-        {
+        withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
           sh '''
 	      #pwd
 	      #ls -la
 	      cat deploy/appschema.sql
-              sqitch deploy "db:snowflake://amrutdengre:NewStart123@vxa95806.us-east-1/DEMO_DB?Driver=Snowflake"
+              sqitch deploy "db:snowflake://USERNAME:PASSWORD@vxa95806.us-east-1/DEMO_DB?Driver=Snowflake"
               '''           
         }
       }
     }
     stage('Verify changes') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
           sh '''
-              sqitch verify "db:snowflake://amrutdengre:NewStart123@vxa95806.us-east-1/DEMO_DB?Driver=Snowflake"
+              sqitch verify "db:snowflake://USERNAME:PASSWORD@vxa95806.us-east-1/DEMO_DB?Driver=Snowflake"
               ''' 
         }
       }
