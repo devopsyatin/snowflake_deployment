@@ -24,7 +24,7 @@ pipeline {
         withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
         {
           sh '''
-              sqitch deploy "db:snowflake://$USERNAME@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
+              sqitch deploy "db:snowflake://amrutdengre:NewStart123@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               '''           
         }
       }
@@ -33,7 +33,7 @@ pipeline {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh '''
-              sqitch verify "db:snowflake://$USERNAME@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
+              sqitch verify "db:snowflake://amrutdengre:NewStart123@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               ''' 
         }
       }
