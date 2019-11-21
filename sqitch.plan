@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=testproject
+%uri=https://github.com/yatinorgtest/snowflake-deployment/
+
+appschema 2019-11-19T12:30:05Z amrutdengre <amrutdengre@gmail.com> # Add schema for all snowflake-project objects.
