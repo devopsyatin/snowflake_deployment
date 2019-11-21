@@ -35,7 +35,7 @@ pipeline {
         {
           sh '''
 	      pwd
-	      cd ..
+	      ls -la
               sqitch deploy "db:snowflake://amrutdengre:NewStart123@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               '''           
         }
