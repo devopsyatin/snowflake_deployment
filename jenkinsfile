@@ -14,6 +14,8 @@ pipeline {
             sh '''
 	    ls
 	    cat config
+	    cd ~
+	    ls -la
 	    #cp config ~/.snowsql/config
             # rm /bin/snowsql 
             # mv /var/snowsql /bin/
