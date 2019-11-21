@@ -59,7 +59,7 @@ pipeline {
 	      #pwd
 	      #ls -la
 	      cat deploy/appschema.sql
-              sqitch deploy "db:snowflake://$USERNAME@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
+              sqitch deploy "db:snowflake://amrutdengre@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               '''           
         }
       }
@@ -68,7 +68,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'snowflake_creds', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
           sh '''
-              sqitch verify "db:snowflake://$USERNAME@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
+              sqitch verify "db:snowflake://amrutdengre@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               ''' 
         }
       }
