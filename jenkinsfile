@@ -36,6 +36,7 @@ pipeline {
           sh '''
 	      pwd
 	      ls -la
+	      cat deploy/appschema.sql
               sqitch deploy "db:snowflake://amrutdengre:NewStart123@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               '''           
         }
