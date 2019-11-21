@@ -18,10 +18,10 @@ pipeline {
             ''' 
         }
 	  }
-    }
     stage('Deploy changes') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
+        {
           sh '''
               sqitch deploy "db:snowflake://$USERNAME:$PASSWORD@VXA95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake"
               '''           
@@ -37,6 +37,7 @@ pipeline {
         }
       }
     }
+  }
 	post {
     always {
       sh 'chmod -R 777 .'
