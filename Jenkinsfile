@@ -5,9 +5,11 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'cat /etc/*release*'
-				whoami
-				hostname -i
+		sh '''
+                cat /etc/*release*
+		whoami
+		hostname -i
+		'''
             }
         }
     }
