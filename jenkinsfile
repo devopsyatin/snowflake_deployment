@@ -17,7 +17,9 @@ pipeline {
 	    snowsql -v
 	    sqitch --version
 	    cp config ~/.snowsql/config
+	    cp config /bin/.snowsql/config
 	    cat ~/.snowsql/config
+	    cat /bin/.snowsql/config
 	    whoami
             ''' 
         }
