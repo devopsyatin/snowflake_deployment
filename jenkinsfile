@@ -57,7 +57,6 @@ pipeline {
 	      #pwd
 	      #ls -la
 	      cat deploy/appschema.sql
-	      ping 
               sqitch deploy 'db:snowflake://amrutdengre@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake'
               '''           
         }
