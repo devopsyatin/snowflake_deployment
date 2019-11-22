@@ -11,6 +11,7 @@ pipeline {
     stage('Verifying Prerequisite Versions') {
         steps {
             sh '''
+	    echo $WORKSPACE
 	    ls
 	    hostname
 	    snowsql -v
