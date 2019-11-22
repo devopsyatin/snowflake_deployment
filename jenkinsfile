@@ -78,4 +78,3 @@ post {
       sh 'chmod -R 777 .'
     }
   }
-  }
