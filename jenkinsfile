@@ -4,7 +4,7 @@ pipeline {
 			}
   agent {
     docker {
-      image 'yatu10/snowflake-sqitch_21nov'
+      image 'hashmapinc/sqitch:jenkins'
       args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
 		   }
 		}
@@ -12,15 +12,17 @@ pipeline {
     stage('Moving .snowsql to workspace and replacing snowsql in /bin') {
         steps {
             sh '''
-	    ls
-	    snowsql -v
-	    sqitch --version
-	    cp config ~/.snowsql/config
-	    cat ~/.snowsql/config
-            # rm /bin/snowsql 
-            # mv /var/snowsql /bin/
-            # mv /var/.snowsql ./
+	    #ls
+	    #snowsql -v
+	    #sqitch --version
+	    #cp config ~/.snowsql/config
+	    #cat ~/.snowsql/config
+            rm /bin/snowsql 
+            mv /var/snowsql /bin/
+            mv /var/.snowsql ./
 	    whoami
+	    sqitch --version
+	    snowsql -v
             ''' 
         }
 	  }
@@ -34,13 +36,13 @@ pipeline {
               #if [ echo $? != 0 ]; then 
               #sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
               #else
-	      sqitch config --user engine.snowflake.client /bin/snowsql
-	      sqitch config --user user.name 'amrutdengre'
-              sqitch config --user user.email 'amrutdengre@gmail.com'
-	      cat ~/.sqitch/sqitch.conf
-	      cat sqitch.conf
-	      cat sqitch.plan
-	      hostname
+	      #sqitch config --user engine.snowflake.client /bin/snowsql
+	      #sqitch config --user user.name 'amrutdengre'
+              #sqitch config --user user.email 'amrutdengre@gmail.com'
+	      #cat ~/.sqitch/sqitch.conf
+	      #cat sqitch.conf
+	      #cat sqitch.plan
+	      #hostname
 	      #snowsql -a vxa95806.us-east-1 -u amrutdengre
 	      #sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
 	      #echo "USE WAREHOUSE COMPUTE_WH;
@@ -59,7 +61,7 @@ pipeline {
 	      #pwd
 	      #ls -la
 	      cat deploy/appschema.sql
-              sqitch deploy db:snowflake://amrutdengre@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake
+              sqitch deploy 'db:snowflake://amrutdengre@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake'
               '''           
         }
       }
@@ -67,7 +69,7 @@ pipeline {
     stage('Verify changes') {
       steps {
            sh '''
-              sqitch verify db:snowflake://amrutdengre@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake
+              sqitch verify 'db:snowflake://amrutdengre@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake'
               ''' 
         }
       }
