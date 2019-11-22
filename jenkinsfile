@@ -9,7 +9,7 @@ pipeline {
 		   }
 		}
   stages {
-    stage('Moving .snowsql to workspace and replacing snowsql in /bin') {
+    stage('Verifying Prerequisite Versions') {
         steps {
             sh '''
 	    ls
@@ -23,7 +23,7 @@ pipeline {
         }
 	  }
 	  
-    stage('Initialize Sqitch') {
+    stage('Verifying Sqitch Configs') {
     	steps{
     		sh '''
 	      #mkdir testsnow 	
@@ -32,13 +32,13 @@ pipeline {
               #if [ echo $? != 0 ]; then 
               #sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
               #else
-	      #sqitch config --user engine.snowflake.client /bin/snowsql
-	      #sqitch config --user user.name 'amrutdengre'
-              #sqitch config --user user.email 'amrutdengre@gmail.com'
-	      #cat ~/.sqitch/sqitch.conf
-	      #cat sqitch.conf
-	      #cat sqitch.plan
-	      #hostname
+	      sqitch config --user engine.snowflake.client /bin/snowsql
+	      sqitch config --user user.name 'amrutdengre'
+              sqitch config --user user.email 'amrutdengre@gmail.com'
+	      cat ~/.sqitch/sqitch.conf
+	      cat sqitch.conf
+	      cat sqitch.plan
+	      hostname
 	      #snowsql -a vxa95806.us-east-1 -u amrutdengre
 	      #sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
 	      #echo "USE WAREHOUSE COMPUTE_WH;
@@ -51,7 +51,7 @@ pipeline {
                
     		}
 	}
-    stage('Deploy changes') {
+    stage('Deploy changes to SampleDB') {
       steps {
            sh '''
 	      #pwd
@@ -62,7 +62,7 @@ pipeline {
         }
       }
    
-    stage('Verify changes') {
+    stage('Verify changes to SampleDB') {
       steps {
            sh '''
               sqitch verify 'db:snowflake://amrutdengre@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake'
