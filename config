@@ -9,7 +9,7 @@
 
 #If a connection doesn't specify a value, it will default to these
 #
-accountname = VXA95806
+accountname = vxa95806
 region = us-east-1
 username = amrutdengre
 password = NewStart123
@@ -23,7 +23,7 @@ rolename = ACCOUNTADMIN
 [connections.amrutdengre]
 #Can be used in SnowSql as #connect example
 
-accountname = VXA95806.us-east-1
+accountname = vxa95806
 username = amrutdengre
 password = NewStart123
 rolename = ACCOUNTADMIN
