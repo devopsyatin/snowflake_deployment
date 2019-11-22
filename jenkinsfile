@@ -16,8 +16,6 @@ pipeline {
 	    hostname
 	    snowsql -v
 	    sqitch --version
-	    cd /bin
-	    ls -la
 	    cp config ~/.snowsql/config
 	    cp config /bin/config
 	    cat ~/.snowsql/config
