@@ -12,9 +12,15 @@ pipeline {
     stage('Moving .snowsql to workspace and replacing snowsql in /bin') {
         steps {
             sh '''
-	    #ls
-	    #snowsql -v
-	    #sqitch --version
+	    ls
+	    hostname
+	    snowsql -v
+	    sqitch --version
+	    ls /bin/snowsql
+	    ls /var/snowsql
+	    ls /bin/
+	    /var/.snowsql
+	    ls ./
 	    #cp config ~/.snowsql/config
 	    #cat ~/.snowsql/config
             rm /bin/snowsql 
