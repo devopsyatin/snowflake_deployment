@@ -23,7 +23,7 @@ rolename = ACCOUNTADMIN
 [connections.amrutdengre]
 #Can be used in SnowSql as #connect example
 
-accountname = vxa95806
+accountname = vxa95806.us-east-1
 username = amrutdengre
 password = NewStart123
 rolename = ACCOUNTADMIN
