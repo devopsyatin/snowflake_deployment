@@ -17,7 +17,8 @@ pipeline {
 	    snowsql -v
 	    sqitch --version
 	    echo "Before Copy"
-	    pwd
+	    pwd; echo "Listing content of `pwd` path"
+	    ls
 	    cp config ~/.snowsql/config
 	    cp config /bin/config
 	    cat ~/.snowsql/config
