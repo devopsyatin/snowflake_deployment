@@ -40,6 +40,7 @@ pipeline {
 	      cat ~/.sqitch/sqitch.conf
 	      cat sqitch.conf
 	      cat sqitch.plan
+	      hostname
 	      #snowsql -a vxa95806.us-east-1 -u amrutdengre
 	      #sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
 	      #echo "USE WAREHOUSE COMPUTE_WH;
