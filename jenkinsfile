@@ -19,9 +19,9 @@ pipeline {
 	    cd /bin
 	    ls -la
 	    cp config ~/.snowsql/config
-	    cp config /bin/.snowsql/config
+	    cp config /bin/config
 	    cat ~/.snowsql/config
-	    cat /bin/.snowsql/config
+	    cat /bin/config
 	    whoami
             ''' 
         }
