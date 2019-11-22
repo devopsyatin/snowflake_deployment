@@ -27,6 +27,9 @@ accountname = VXA95806.us-east-1
 username = amrutdengre
 password = NewStart123
 rolename = ACCOUNTADMIN
+dbname = DEMO_DB
+warehousename = COMPUTE_WH
+
 [variables]
 #Loads these variables on startup
 #Can be used in SnowSql as select $example_variable
