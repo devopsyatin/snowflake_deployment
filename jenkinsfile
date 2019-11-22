@@ -16,11 +16,15 @@ pipeline {
 	    hostname
 	    snowsql -v
 	    sqitch --version
+	    echo "Before Copy"
+	    pwd
 	    cp config ~/.snowsql/config
 	    cp config /bin/config
 	    cat ~/.snowsql/config
 	    cat /bin/config
 	    whoami
+	    echo "After Copy"
+	    pwd
             ''' 
         }
 	  }
