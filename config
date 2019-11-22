@@ -1,4 +1,4 @@
-[connections]
+[connections.amrutdengre]
 # *WARNING* *WARNING* *WARNING* *WARNING* *WARNING* *WARNING*
 #
 # The Snowflake user password is stored in plain text in this file.
@@ -20,7 +20,7 @@ rolename = ACCOUNTADMIN
 #proxy_host = defaultproxyhost
 #proxy_port = defaultproxyport
 
-[connections.amrutdengre]
+[connections.amrutdengre1]
 #Can be used in SnowSql as #connect example
 
 accountname = vxa95806.us-east-1
