@@ -4,7 +4,7 @@ pipeline {
 			}
   agent {
     docker {
-      image 'hashmapinc/sqitch:jenkins'
+      image 'yatu10/snowflake-sqitch_21nov'
       args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
 		   }
 		}
@@ -16,19 +16,9 @@ pipeline {
 	    hostname
 	    snowsql -v
 	    sqitch --version
-	    ls /bin/snowsql
-	    ls /var/snowsql
-	    ls /bin/
-	    /var/.snowsql
-	    ls ./
-	    #cp config ~/.snowsql/config
-	    #cat ~/.snowsql/config
-            rm /bin/snowsql 
-            mv /var/snowsql /bin/
-            mv /var/.snowsql ./
+	    cp config ~/.snowsql/config
+	    cat ~/.snowsql/config
 	    whoami
-	    sqitch --version
-	    snowsql -v
             ''' 
         }
 	  }
