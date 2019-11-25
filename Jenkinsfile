@@ -30,7 +30,7 @@ pipeline {
 	      cat sqitch.conf
 	      cat sqitch.plan
 	      hostname
-	      sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
+	      #sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
 	      cat deploy/appschema.sql
 	          '''
                
