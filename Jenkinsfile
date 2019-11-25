@@ -1,6 +1,13 @@
-  dockerNode(image: 'yatu10/snowflake-sqitch_21nov', sideContainers: ['']) {
-    args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
-	}
+pipeline {
+    options {
+      timeout(time: 1, unit: 'HOURS') 
+			}
+  agent {
+    docker {
+      image 'yatu10/snowflake-sqitch_21nov'
+      args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
+		   }
+		}
   stages {
     stage('Verifying Prerequisite Versions') {
         steps {
@@ -77,3 +84,5 @@ post {
     always {
       sh 'chmod -R 777 .'
     }
+  }
+  }
