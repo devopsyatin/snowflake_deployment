@@ -12,21 +12,10 @@ pipeline {
     stage('Verifying Prerequisite Versions') {
         steps {
             sh '''
-	    echo $WORKSPACE
-	    ls
-	    hostname
-	    snowsql -v
-	    sqitch --version
-	    echo "Before Copy"
-	    pwd; echo "Listing content of `pwd` path"
-	    ls
-	    cp config ~/.snowsql/config
-	    cp config /bin/config
-	    cat ~/.snowsql/config
-	    cat /bin/config
-	    whoami
-	    echo "After Copy"
-	    pwd
+	   	snowsql -v
+		sqitch --version
+		whoami
+		hostname
             ''' 
         }
 	  }
@@ -34,12 +23,6 @@ pipeline {
     stage('Verifying Sqitch Configs') {
     	steps{
     		sh '''
-	      #mkdir testsnow 	
-	      #cd testsnow
-	      #sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
-              #if [ echo $? != 0 ]; then 
-              #sqitch init snowjenkinstest --uri https://github.com/yatinorgtest/snowflake_deployment/ --engine snowflake
-              #else
 	      sqitch config --user engine.snowflake.client /bin/snowsql
 	      sqitch config --user user.name 'amrutdengre'
               sqitch config --user user.email 'amrutdengre@gmail.com'
@@ -47,26 +30,18 @@ pipeline {
 	      cat sqitch.conf
 	      cat sqitch.plan
 	      hostname
-	      #snowsql -a vxa95806.us-east-1 -u amrutdengre
-	      #sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
-	      #echo "USE WAREHOUSE COMPUTE_WH;
-
-              #-- XXX Add DDLs here.
-
-              #CREATE SCHEMA JenkinsTest;" > deploy/appschema.sql
-              #fi
-              '''
+	      sqitch add appschema -n 'Add schema for all snowjenkinstest objects.'
+	      cat deploy/appschema.sql
+	          '''
                
     		}
 	}
     stage('Deploy changes to SampleDB') {
       steps {
            sh '''
-	      #pwd
-	      #ls -la
+	      hostname
 	      cat deploy/appschema.sql
-	      #snowsql -c amrutdengre 
-	      sqitch deploy 'db:snowflake://amrutdengre@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake'
+	      sqitch deploy 'db:snowflake://amrutdengre:NewStart123@vxa95806.us-east-1.snowflakecomputing.com/DEMO_DB?Driver=Snowflake'
               '''           
         }
       }
